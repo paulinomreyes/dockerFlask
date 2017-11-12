@@ -10,7 +10,7 @@ start = int(round(time.time()))
 @app.route("/")
 def hello_world():
 
-    return "Flask App!"
+    return "<html><title>Flask App</title><body>Hello World</body></html>"
 
 if __name__ == '__main__':
     parser = optparse.OptionParser(usage="python app.py -p ")
