@@ -11,6 +11,7 @@ COPY app.py /src/app.py
 COPY app/main.py /src/app/main.py
 COPY app/__init__.py /src/app/__init__.py
 COPY app/templates/index.html /src/app/templates/index.html
+COPY app/templates/about.html /src/app/templates/about.html
 
 EXPOSE  8000
 CMD ["python", "/src/app.py"]
