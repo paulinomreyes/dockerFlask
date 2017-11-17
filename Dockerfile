@@ -1,5 +1,7 @@
 FROM alpine:3.1
 
+RUN groupadd flaskgroup && useradd -m -g flaskgroup -s /bin/bash flask
+
 # Update
 RUN apk add --update python py-pip
 
@@ -7,11 +9,16 @@ RUN apk add --update python py-pip
 RUN pip install Flask
 
 # Bundle app source
-COPY app.py /src/app.py
-COPY app/main.py /src/app/main.py
-COPY app/__init__.py /src/app/__init__.py
-COPY app/templates/index.html /src/app/templates/index.html
-COPY app/templates/about.html /src/app/templates/about.html
+COPY app.py /src/myapp/app.py
+COPY app/main.py /src/myapp/app/main.py
+COPY app/__init__.py /src/myapp/app/__init__.py
+COPY app/templates/index.html /src/myapp/app/templates/index.html
+COPY app/templates/about.html /src/myapp/app/templates/about.html
+
+RUN chown -R flask:flaskgroup /src/myapp
 
 EXPOSE  8000
-CMD ["python", "/src/app.py"]
+
+USER flask
+
+CMD ["python", "/src/myapp/app.py"]
