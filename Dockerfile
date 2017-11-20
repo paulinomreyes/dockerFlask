@@ -3,7 +3,7 @@ FROM ubuntu:latest
 
 RUN adduser pflash 
 # Update
-RUN apk add --update python py-pip
+RUN apt-get add --update python py-pip
 
 # Install app dependencies
 RUN pip install Flask
