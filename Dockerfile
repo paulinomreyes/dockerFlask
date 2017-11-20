@@ -4,7 +4,7 @@ FROM ubuntu
 RUN apt-get update -y
 RUN apt-get install python python-pip -y
 
-RUN adduser --disabled-password barry
+RUN adduser --uid 1000 --disabled-password barry
 RUN adduser barry root
 
 # Install app dependencies
