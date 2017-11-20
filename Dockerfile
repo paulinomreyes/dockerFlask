@@ -1,7 +1,8 @@
 #FROM alpine:3.1
 FROM ubuntu:latest
 
-RUN adduser -S pflash -G root
+RUN adduser pflash 
+RUN useradd -G root pflash
 # Update
 RUN apk add --update python py-pip
 
