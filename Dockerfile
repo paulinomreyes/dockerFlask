@@ -1,7 +1,7 @@
-#FROM alpine:3.1
-FROM ubuntu:latest
+FROM alpine:3.1
 
-RUN adduser pflash 
+RUN adduser -S pflash -G root
+
 # Update
 RUN apt-get add --update python py-pip
 
@@ -15,7 +15,7 @@ COPY app/__init__.py /src/myapp/app/__init__.py
 COPY app/templates/index.html /src/myapp/app/templates/index.html
 COPY app/templates/about.html /src/myapp/app/templates/about.html
 
-RUN chown -R pflash:pflash /src/myapp
+RUN chown -R pflash:root /src/myapp
 
 EXPOSE  8000
 
