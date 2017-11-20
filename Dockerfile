@@ -3,7 +3,7 @@ FROM alpine:3.1
 RUN adduser -S pflash -G root
 
 # Update
-RUN apt-get add --update python py-pip
+RUN apk add --update python py-pip
 
 # Install app dependencies
 RUN pip install Flask
