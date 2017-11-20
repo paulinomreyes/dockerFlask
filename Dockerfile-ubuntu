@@ -1,9 +1,11 @@
-FROM alpine:3.1
+FROM ubuntu
 
 # Update
-RUN apk add --update python py-pip
+RUN apt-get update -y
+RUN apt-get install python python-pip -y
 
-RUN adduser -u 1000 -S barry -G root
+RUN adduser --uid 1000 --disabled-password barry
+RUN adduser barry root
 
 # Install app dependencies
 RUN pip install Flask
@@ -20,5 +22,6 @@ RUN chown -R barry:root /src/myapp
 EXPOSE  8000
 
 USER barry
+
 
 CMD ["python", "/src/myapp/app.py"]
