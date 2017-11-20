@@ -1,9 +1,11 @@
-FROM alpine:3.1
-
-RUN adduser -S pflash -G root
+FROM ubuntu
 
 # Update
-RUN apk add --update python py-pip
+RUN apt-get update
+RUN apt-get install python python-pip
+
+RUN adduser --disabled-password barry
+RUN adduser barry root
 
 # Install app dependencies
 RUN pip install Flask
@@ -15,10 +17,11 @@ COPY app/__init__.py /src/myapp/app/__init__.py
 COPY app/templates/index.html /src/myapp/app/templates/index.html
 COPY app/templates/about.html /src/myapp/app/templates/about.html
 
-RUN chown -R pflash:root /src/myapp
+RUN chown -R barry:root /src/myapp
 
 EXPOSE  8000
 
-USER pflash
+USER barry
+
 
 CMD ["python", "/src/myapp/app.py"]
