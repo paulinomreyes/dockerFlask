@@ -1,8 +1,8 @@
 FROM ubuntu
 
 # Update
-RUN apt-get update
-RUN apt-get install python python-pip
+RUN apt-get update -y
+RUN apt-get install python python-pip -y
 
 RUN adduser --disabled-password barry
 RUN adduser barry root
