@@ -3,12 +3,13 @@ from flask import Flask, jsonify, request, session, render_template, abort, sess
 import os
 import sys
 import re
-
+import socket
 
 @app.route('/')
 @app.route('/index')
 def index():
-  return render_template('index.html')
+  hostname = socket.gethostname()
+  return render_template('index.html', hostName=hostname)
 
 @app.route('/about')
 def about():
