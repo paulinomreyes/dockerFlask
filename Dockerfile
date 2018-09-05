@@ -1,6 +1,6 @@
 FROM alpine:3.1
 
-# Update
+# Updated
 RUN apk add --update python py-pip
 
 RUN adduser -u 1000 -S barry -G root
